@@ -2,13 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct triangle {
+typedef struct triangle {
   int a;
   int b;
   int c;
-};
-
-typedef struct triangle triangle;
+} triangle;
 
 double area(triangle tr) {
   double p = (tr.a + tr.b + tr.c) / 2.0;
