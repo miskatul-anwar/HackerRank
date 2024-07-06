@@ -1,38 +1,23 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
+#include <bits/stdc++.h>
+#include <gmpxx.h>
 using namespace std;
 
-string addBigNumbers(const vector<string> &numbers) {
-  string result;
-  int carry = 0;
-
-  for (int i = 49; i >= 0; --i) {
-    int sum = carry;
-    for (const string &num : numbers) {
-      sum += num[i] - '0';
+class Solution {
+public:
+  void solve(void) {
+    int n;
+    mpz_class x = 0;
+    cin >> n;
+    while (n--) {
+      cin >> x;
+      x += x;
     }
-    result.insert(result.begin(), sum % 10 + '0');
-    carry = sum / 10;
+    string s = x.get_str();
+    string g = s.substr(0, 10);
+    cout << g << endl;
   }
-
-  while (carry) {
-    result.insert(result.begin(), carry % 10 + '0');
-    carry /= 10;
-  }
-
-  return result;
-}
-
-int main() {
-  int N;
-  cin >> N;
-  vector<string> numbers(N);
-  for (int i = 0; i < N; ++i) {
-    cin >> numbers[i];
-  }
-  string sum = addBigNumbers(numbers);
-  cout << sum.substr(0, 10) << endl;
+};
+int main(void) {
+  Solution().solve();
   return 0;
 }
